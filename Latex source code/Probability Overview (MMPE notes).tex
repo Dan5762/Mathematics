@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+ \geometry{a4paper, total={185mm,257mm}, left=15mm, top=15mm}
+
+
+
+\newcommand\textline[4][t]{%
+  \par\smallskip\noindent\parbox[#1]{.35\textwidth}{\raggedright\texttt{}#2}%
+  \parbox[#3]{.65\textwidth}{\raggedright\texttt{}#3}%
+}
+
+\begin{document}
+
+\section*{Probability}
+
+\subsection*{Notation}
+\textline[t]{Intersection of $A$ and $B$:}{$A \cap B$}
+\newline
+\textline[t]{Intersection of $A$ and $B$:}{$A \cap B$}
+\newline
+\textline[t]{Sample space:}{$A \cup \overline{A} = S$}
+\newline
+\textline[t]{Disjoint example:}{$A \cap \overline{A} = \emptyset$}
+
+\subsection*{Useful Laws and Theorems Derived from Set Notation}
+\textline[t]{De Morgan's laws:}{$\overline{A \cup B} = \overline{A} \cap \overline{B}$}
+\newline
+\textline[t]{Addition laws for probabilities:}{$P(A) + P(B) - P(A \cap B) = P(A \cup B)$}
+\newline
+\textline[t]{Total probability law:}{$\Sigma_i P(A_i \cap B)= P(B)$ \textit{where $A_i$ exhausts the sample space}}
+\newline
+\textline[t]{Conditional probability:}{$\frac{P(A \cap B)}{P(B)} = P(A|B)$}
+\newline
+\textline[t]{Bayes' theorem:}{$P(A|B)P(B) = P(B|A)P(A)$}
+\newline
+\newline
+\textit{Note: {\footnotesize $P(B) = P(B|A)P(A) + P(B|\overline{A})P(\overline{A})$}, which gives the alternative form $P(A|B) = \frac{P(B|A)P(A)}{P(B|A)P(A) + P(B|\overline{A})P(\overline{A})}$}
+
+\subsection*{Permutations and Combination}
+\textline[t]{Permutations of k objects from n:}{$^nP_k = \frac{n!}{(n-k)!}$}
+\newline
+\textline[t]{Combinations of k objects from n:}{$^nC_k = \frac{n!}{k!(n-k)!}$}
+\newline
+\newline
+\textit{Otherwise known as the binomial coefficient}
+
+\subsection*{Distribution Basics}
+\textline[t]{Moment of distribution X:}{$\mu_k = E \lbrack X^k \rbrack = \int x^k f(x) dx$}
+\newline
+\textline[t]{Variance of distribution X:}{$V \lbrack X \rbrack = E \lbrack (X-\mu)^2\rbrack = E \lbrack X^2 \rbrack - 2 \mu E \lbrack X \rbrack + \mu^2 = E \lbrack X^2 \rbrack - \mu^2$}
+\newline
+\textline[t]{Central moment of distribution X:}{$\nu_k = E \lbrack (X-\mu)^k \rbrack = \int (x-\mu)^k f(x) dx$}
+\newline
+\textline[t]{Normalised central moment:}{$\gamma_k = \frac{\nu_k}{\nu^\frac{k}{2}_k} =\frac{\nu_k}{\sigma^k} $}
+\newline
+\newline
+\textit{where $\gamma_3$ is  the skewness and $\gamma_4$ is the kurtois of a distribution}
+
+\subsection*{Random Variables}
+
+\subsubsection*{Discrete Random Variables}
+\textit{Define X to be a discrete RV which takes only the values $x_i = 1, 2, ..., n$, then $Y$ is discretely defined to be $y_i = Y(x_i)$}
+\textline[t]{Probability function of Y:}{$g(y) =
+\begin{cases}
+	\Sigma_j f(x_j) & \text{if } y = y_i \\
+	0 & \text{otherwise}
+\end{cases}$}
+\newline
+\newline
+\textit{where the sum extends over $j$ for which $y_i = Y(x_j)$}
+\newline
+\newline
+\textit{If $Y(x)$ has a single-valued inverse then we have the closed form expression for $g(y)$}
+\textline[t]{Probability function of Y:}{$g(y) =
+\begin{cases}
+	f(x(y_i)) & \text{if } y = y_i \\
+	0 & \text{otherwise}
+\end{cases}$}
+\newline
+\newline
+
+\subsubsection*{Continuous Random Variables}
+\textit{If $X$ is a continuous RV then so to is $Y(X)$}
+\textline[t]{Probability of $Y$ for $y \rightarrow y+dy$:}{$g(y)dy = \int_{dS} f(x)dx$}
+\newline
+\newline
+\textline[t]{If $X(Y)$ is single-valued we have:}{$g(y)dy = |\int^{x(y+dy)}_{x(y)} f(x') dx'| = \int^{x(y) + |\frac{dx}{dy}|dy}_{x(y)} f(x')dx' = f(x(y))|\frac{dx}{dy}|dy$}
+\newline
+\newline
+
+\subsubsection*{Functions of Several Random Variables}
+\textline[t]{Probability function of $Z(X,Y)$:}{$p(z)= \sum\limits_{i,j}f(x_i , y_i)$}
+\newline
+\newline
+\textit{where the sum extends over $i, j$ such that $z=Z(x_i, y_i)$}
+\newline
+\textline[t]{For the continuous case:}{$p(z)dz=\int\int_{dS} f(x,y)dxdy$}
+\newline
+\newline
+\textit{where $dS$ is the infinitesimal area between $Z(x,y)=z$ and $Z(x,y)=z+dz$}
+\newline
+\textline[t]{Expectation of Z:}{$E \lbrack Z \rbrack = \int zp(z) dz = \int\int Z(X,Y)f(x,y)dxdy$}
+\newline
+\newline
+\textline{Taylor expansion of $Z(X,Y)$:}{$Z\approx Z(\mu_x,\mu_y)+(X-\mu_x)(\frac{\partial Z}{\partial x})_{x=\mu_x}+(Y-\mu_y)(\frac{\partial Z}{\partial y})_{y=\mu_y}$}
+\newline
+\newline
+\textit{where the expansion is taken around the means of $x$ and $y$}
+\newline
+\textline{Expectation of Taylor expansion:}{$E \lbrack Z\rbrack \approx Z(\mu_x,\mu_y)+(E \lbrack X \rbrack - \mu_x)(\frac{\partial Z}{\partial x})_{x=\mu_x}+(E \lbrack Y \rbrack - \mu_y) (\frac{\partial Z}{\partial y})_{y=\mu_y}$}
+\newline
+\textline{}{$E \lbrack Z\rbrack \approx Z(\mu_x,\mu_y)$}
+\newline
+\newline
+\textline{Variance of $Z(X,Y)$:}{$V \lbrack Z\rbrack = \int (z-\mu_z)^2 p(z) dz = \int \int \lbrack Z-\mu_z \rbrack ^2 f(x,y) dx dy$}
+\newline
+\newline
+\textit{Hence if $x$ and $y$ are two independent random variables, ie $f(x,y)=g(x)h(y)$}
+\textline{\textit{setting $Z=aX+BY+c$ yields:}}{$V \lbrack Z \rbrack = a^2 V \lbrack X \rbrack + b^2 V \lbrack X \rbrack $}
+\newline
+\newline
+\textline{Variance can be approximated as:}{$V \lbrack Z \rbrack \approx V \lbrack X \rbrack (\frac{\partial Z}{\partial x})^2_{x=\mu_x} + V \lbrack Y \rbrack (\frac{\partial Z}{\partial y})^2_{y=\mu_y}$}
+
+\subsection*{Generating Functions}
+\subsubsection*{Probability Generating Functions}
+\textline{The probability of $X$ taking value $n$ can be written as $f_n$, such that:}{$\sum\limits_{n=0}^{\infty}f_{n} = 1$}
+\newline
+\textline{Probability generating function:}{$\Phi_X(t) = \sum\limits_{n=0}^\infty f_n t^n = E \lbrack t^X \rbrack $}
+\newline
+\subsubsection*{Sums of Random Variables}
+\textline{Define the sum as:}{$S_2 = X + Y$}
+\newline
+\newline
+\text{The PGF of the sum has coefficients}
+	
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{enumitem}
+ \geometry{a4paper, total={185mm,257mm}, left=15mm, top=15mm}
+
+
+
+\newcommand\textline[4][t]{%
+  \par\smallskip\noindent\parbox[#1]{.35\textwidth}{\raggedright\texttt{}#2}%
+  \parbox[#3]{.65\textwidth}{\raggedright\texttt{}#3}%
+}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\begin{document}
+
+\section*{Matrices and Vector Spaces}
+
+\subsection*{Conditions for a Vector Space}
+
+\begin{enumerate}[label=(\roman*)]
+\item Vector set is closed under commutative and associative addition
+\item Vector set is closed under distributative and associative multiplication by a scalar
+\item Vector set contains a null vector
+\item Multiplication by unity leaves any vector unchanged
+\item All vectors have a corresponding negative 
+\end{enumerate}
+
+\textline{Span of a vector space:}{The span of a vector space is defined as the set of all vectors that can be expressed as a linear sum of the basis vectors:
+$\vec{x}=\alpha\vec{a}+\beta\vec{b}+...+\sigma\vec{s}$}
+\newline
+\newline
+\newline
+\text{If $\vec{x}$ is equal to $\vec{0}$ for some choice of $\alpha, \beta,..., \sigma$ then $\vec{a}, \vec{b},..., \vec{s}$}
+
+\end{document}
