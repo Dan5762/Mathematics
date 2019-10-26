@@ -135,6 +135,18 @@
 \textline{Define the sum as:}{$S_2 = X + Y$}
 \newline
 \newline
-\text{The PGF of the sum has coefficients}
+The PGF of the sum has coefficients for $t^n$ that are the probability that $X+Y=n$, this is equivalent to $X=r$ and $Y=n-r$ for 0 $\leq$ r $\leq$ n.
+\textline{Hence we have:}{$P(S_2=n) = \sum\limits_{r=0}^{n} P(X=r)P(Y=n-r)$}
+\newline
+\textline{This leads to the PGF:}{$\Phi_{S_2}(t) = \sum\limits_{r=0}^\infty \sum\limits_{n=r}^\infty P(X=r)t^r P(Y=n-r) t^{n-r}$}
+\newline
+\textline{Setting $n=r+s$ yields:}{$\Phi_{S_2}(t) = \sum\limits_{r=0}^{\infty} P(X=r)t^r) \sum\limits_{s=0}^{\infty} P(Y=s) t^s = \Phi_X(t) \Phi_Y(t)$}
+\newline
+\textline{This result can be seen from:}{$E \lbrack t^{X+Y} \rbrack = E \lbrack t^X \rbrack E \lbrack t^Y \rbrack$}
+\newline
+\newline
+\newline
+The sum of a variable length of random numbers, ie $S_N = X_1 + X_2 + ... + X_N$, where N is defined to have $P(N=n) = h_n$ with PGF $\chi_{N} (t) = \sum\limits_n h_n t^n$, can be predicted using:
+\textline{Probability that $S_N = k$}{$\zeta_k = \sum\limits_{n=0}^{\infty} P(N=n) P(S_N = k) = \sum\limits_{n=0}^{\infty} h_n \text{ x coeff of } t^k in \lbrack \Phi_X(t) \rbrack^n$}
 	
 \end{document}
