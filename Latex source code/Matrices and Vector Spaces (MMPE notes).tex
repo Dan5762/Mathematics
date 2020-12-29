@@ -1,40 +1,55 @@
-\documentclass[12pt]{article}
-\usepackage{lingmacros}
-\usepackage{tree-dvips}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{geometry}
-\usepackage{enumitem}
- \geometry{a4paper, total={185mm,257mm}, left=15mm, top=15mm}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
 
-
-
-\newcommand\textline[4][t]{%
-  \par\smallskip\noindent\parbox[#1]{.35\textwidth}{\raggedright\texttt{}#2}%
-  \parbox[#3]{.65\textwidth}{\raggedright\texttt{}#3}%
-}
-
-\renewcommand{\vec}[1]{\mathbf{#1}}
+\title{Matrices and Vector Spaces}
+\author{Daniel Long}
 
 \begin{document}
 
-\section*{Matrices and Vector Spaces}
+\maketitle
+  
+\tableofcontents
 
-\subsection*{Conditions for a Vector Space}
+\section{Vector Spaces}
 
-\begin{enumerate}[label=(\roman*)]
-\item Vector set is closed under commutative and associative addition
-\item Vector set is closed under distributative and associative multiplication by a scalar
-\item Vector set contains a null vector
-\item Multiplication by unity leaves any vector unchanged
-\item All vectors have a corresponding negative 
+\subsection{Conditions for a Vector Space}
+
+A set of vectors \textbf{a},\textbf{b},\textbf{c},... form a linear vector space if:
+
+\renewcommand{\theenumi}{\roman{enumi}}
+\begin{enumerate}
+\item Set is closed under commutative and associative addition
+\item Set is closed under distributative and associative multiplication by a scalar
+\item Set contains a null vector
+\item Set contains a unity vector
+\item A corresponding negative exists for all vectors
 \end{enumerate}
 
-\textline{Span of a vector space:}{The span of a vector space is defined as the set of all vectors that can be expressed as a linear sum of the basis vectors:
-$\vec{x}=\alpha\vec{a}+\beta\vec{b}+...+\sigma\vec{s}$}
-\newline
-\newline
-\newline
-\text{If $\vec{x}$ is equal to $\vec{0}$ for some choice of $\alpha, \beta,..., \sigma$ then $\vec{a}, \vec{b},..., \vec{s}$}
+\subsection{Vector Space Definitions}
+
+\begin{description}
+  \item[Span of a Set of Vectors] \hfill \\ The set of all vectors that can be expressed as a linear sum of the original set
+  \item[Linear Dependence] \hfill \\ A set of vectors are linearly independent if there exists a linear combination equal to the null vector
+  \item[Basis Vectors] \hfill \\ In an N-dimensional vector space V any set of N linearly independent vectors form a set of basis vectors for V
+\end{description}
+
+\section{Inner Product}
+
+The inner product is a generalisation of the dot or scalar product, it has the following properties:
+
+\renewcommand{\theenumi}{\roman{enumi}}
+\begin{enumerate}
+\item $\langle \textbf{a} | \textbf{b} \rangle$ = $\langle \textbf{b} | \textbf{a} \rangle^*$
+\item $\langle \textbf{a} | \lambda \textbf{b} + \mu \textbf{c} \rangle$ = $\lambda \langle \textbf{a} | \textbf{b} \rangle + \mu \langle \textbf{a} | \textbf{c} \rangle$
+\end{enumerate}
+
+\subsection{Inner Product Definitions}
+
+\begin{description}
+  \item[Orthogonality] \hfill \\ Vectors are orthogonal if $ \langle \textbf{a} | \textbf{b} \rangle  = 0 $
+  \item[Vector Norm] \hfill \\ The norm of a vector is given by $ | \textbf{a} | = \langle \textbf{a} | \textbf{a} \rangle ^{\frac{1}{2}} $
+  \item[Orthonormality] \hfill \\ A basis is orthonormal is $ \langle \textbf{e}_i | \textbf{e}_j \rangle  = \delta_{i,j} $
+\end{description}
 
 \end{document}
