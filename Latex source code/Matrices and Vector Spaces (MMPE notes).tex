@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{amsmath}
 
 \title{Matrices and Vector Spaces}
 \author{Daniel Long}
@@ -36,20 +37,83 @@ A set of vectors \textbf{a},\textbf{b},\textbf{c},... form a linear vector space
 
 \section{Inner Product}
 
-The inner product is a generalisation of the dot or scalar product, it has the following properties:
+\subsection{Properties of the Inner Product}
 
-\renewcommand{\theenumi}{\roman{enumi}}
-\begin{enumerate}
-\item $\langle \textbf{a} | \textbf{b} \rangle$ = $\langle \textbf{b} | \textbf{a} \rangle^*$
-\item $\langle \textbf{a} | \lambda \textbf{b} + \mu \textbf{c} \rangle$ = $\lambda \langle \textbf{a} | \textbf{b} \rangle + \mu \langle \textbf{a} | \textbf{c} \rangle$
-\end{enumerate}
+Using an orthonormal basis $ \hat{\textbf{e}} $ we can find the inner product as:
+\begin{align}
+	\langle \textbf{a} | \textbf{b} \rangle 	& = \langle a_1 \hat{\textbf{e}}_1 + a_2 \hat{\textbf{e}}_2 + ... + a_N \hat{\textbf{e}}_N |  b_1 \hat{\textbf{e}}_1 + b_2 \hat{\textbf{e}}_2 + ... + b_N \hat{\textbf{e}}_N \rangle \\
+								& = \Sigma_{i=1}^{N} a_{i}^{*} b_{i} \langle \hat{\textbf{e}}_i | \hat{\textbf{e}}_j \rangle + \Sigma_{i=1}^{N} \Sigma_{j \neq i}^{N} a_{i}^{*} b_{i} \langle \hat{\textbf{e}}_i | \hat{\textbf{e}}_j \rangle \\
+								& = \Sigma_{i=1}^{N} a_{i}^{*} b_{i}
+\end{align}
 
 \subsection{Inner Product Definitions}
 
 \begin{description}
   \item[Orthogonality] \hfill \\ Vectors are orthogonal if $ \langle \textbf{a} | \textbf{b} \rangle  = 0 $
   \item[Vector Norm] \hfill \\ The norm of a vector is given by $ | \textbf{a} | = \langle \textbf{a} | \textbf{a} \rangle ^{\frac{1}{2}} $
-  \item[Orthonormality] \hfill \\ A basis is orthonormal is $ \langle \textbf{e}_i | \textbf{e}_j \rangle  = \delta_{i,j} $
+  \item[Orthonormality] \hfill \\ A basis is orthonormal is $ \langle \hat{\textbf{e}}_i | \hat{\textbf{e}}_j \rangle  = \delta_{i,j} $
 \end{description}
+
+\section{Linear Operators}
+
+In a vector space V with basis vectors $ \hat{\textbf{e}}_i $ we can define the action of the operator A as:
+\begin{align}
+	A \hat{\textbf{e}}_j = \Sigma_{i=1}^N A_{ij} \hat{\textbf{e}}_i
+\end{align}
+
+where $ A_{ij} $ is the ith component of the vector $ A \hat{\textbf{e}}_j $ in this basis and collectively the numbers $ A_{ij} $ are known as the components of the linear operator in the $ \hat{\textbf{e}}_i $ basis.
+
+\subsection{Properties of the Linear Operators}
+
+\begin{description}
+  \item[Distributivity] \hfill \\ (A + B) \textbf{x} = A \textbf{x} + B \textbf{x}
+  \item[Associativity with a scalar] \hfill \\ $ (\lambda A) \textbf{x} = \lambda (A \textbf{x}) $
+  \item[Associativity with another linear operator] \hfill \\ $ (AB) \textbf{x} = A (B \textbf{x}) $
+\end{description}
+
+If a linear operator is singular it does not have an inverse
+
+\section{Matrices}
+
+If a linear operator A transforms vectors from an N dimensional vector space into a vector in an M dimensional vector space, then the operator A can be represented by the matrix:
+\begin{align}
+	A = \begin{pmatrix}
+		A_{11} & A_{12} & ... & A_{1N} \\
+		A_{21} & A_{22} & ... & A_{2N} \\
+		... & ... & ... & ... \\
+		 A_{M1} & A_{M2} & ... & A_{MN} \\
+	\end{pmatrix}
+\end{align}
+
+\subsection{Basic Matrix Algebra}
+
+Using the properties of linear operators we can show that matrices obey:
+\begin{align}
+	(A + B)_{ij} & = A_{ij} + B_{ij} \\
+	(\lambda A)_{ij} & = \lambda A_{ij} \\
+	(AB)_{ij} & = \Sigma_k A_{ik} B_{kj}
+\end{align}
+
+The transpose of a matrix product is given by:
+\begin{align}
+	(AB)^T = B^T A^T
+\end{align}
+
+as proven by:
+\begin{align}
+	(AB)_{ij}^T = (AB)_{ji} = \Sigma_k A_{jk} B_{ki} = \Sigma_k (B^T)_{ik} (A^T)_{kj} = (B^T A^T)_{ij}
+\end{align}
+
+\subsection{Trace of a Matrix}
+
+The trace of a matrix is denoted by:
+\begin{align}
+	Tr(A) = \Sigma_{i=1}^N A_{ii}
+\end{align}
+
+The trace of a product of two matrices is independent of the order, as seen by:
+\begin{align}
+	Tr(AB) = \Sigma_{i=1}^N (AB)_{ii} = \Sigma_{i=1}^N \Sigma_{j=1}^N A_{ij} B_{ji} = \Sigma_{i=1}^N \Sigma_{j=1}^N B_{ji} A_{ij} = \Sigma_{j=1}^N (BA)_{jj} = Tr(BA)
+\end{align}
 
 \end{document}
